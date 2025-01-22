@@ -35,3 +35,16 @@
 //     }
 //   }
 // }
+
+import {PageObject} from "../pages/pageObject";
+
+Cypress.Commands.add('login', (username: string, password: string) => {
+    const pageObject = new PageObject();
+    const url = "https://staging.sportsbet.io/";
+
+    pageObject.visit(url);
+    pageObject.clickSignInButton();
+    pageObject.enterUsernameEmailInput(username);
+    pageObject.enterPasswordInput(password);
+    pageObject.pressSignInToLogInButton();
+});

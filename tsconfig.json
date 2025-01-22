@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "lib": ["ES6", "dom"],
+    "lib": ["ES6", "DOM"],
     "module": "commonjs",
     "moduleResolution": "node",
     "strict": true,
@@ -9,12 +9,16 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "types": ["cypress"]
+    "types": ["cypress", "node"],
   },
   "include": [
     "cypress/**/*.ts",
-    "node_modules/cypress/types/mocha/index.d.ts",
-    "node_modules/cypress/types/mocha/index.d.ts"
+    "node_modules/cypress/types/**/*.d.ts"
   ],
+  "exclude": [
+    "cypress/e2e/**/*.js",
+    "node_modules",
+    "dist"
+  ]
 
 }

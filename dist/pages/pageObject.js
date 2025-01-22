@@ -2,43 +2,48 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageObject = void 0;
 class PageObject {
-    constructor() {
-        //Sign in button
-        this.signInButton = 'button__Button-sc-6uigdf-2 cXPrDW';
-        //Sign up button
-        this.signUpButton = 'sc-kXLzTl iJlZSA';
-        //Username input
-        this.usernameOrEmailInput = 'input[name="username"]';
-        //Password input
-        this.passwordInput = 'input[name="password"]';
-        //Username after logged in
-        this.loggedInUsername = '[data-testid="username"]';
-    }
+    /// <reference types="cypress" />
     //To visit url
     visit(url) {
         cy.visit(url);
     }
-    //To fill the username
-    enterUsernameOrEmail(username) {
-        cy.get(this.usernameOrEmailInput).click().type(username);
+    //get SignIn button
+    getSignInButton() {
+        return cy.get('a[href="/id/login"]');
     }
-    //To fill the password
-    enterPassword(password) {
-        cy.get(this.passwordInput).click().type(password);
-    }
-    //To press the Sign In button
+    //to press the SignIn button
     clickSignInButton() {
-        cy.get(this.signInButton).click();
+        this.getSignInButton()
+            .should('exist')
+            .and('be.visible')
+            .click();
     }
-    //To press the Sign Up button
-    clickSignUpButton() {
-        cy.get(this.signUpButton).click();
+    //get UsernameEmail input
+    getUsernameEmailInput() {
+        return cy.get('input[name="username"]');
     }
-    //To check username after logged in
-    verifyUsername(expectedUsername) {
-        cy.get(this.loggedInUsername, { timeout: 1000 })
-            .should('be.visible')
-            .and('have.text', expectedUsername);
+    //to enter Username/Email data
+    enterUsernameEmailInput(username) {
+        this.getUsernameEmailInput()
+            .should('exist')
+            .and('be.visible')
+            .type(username);
+    }
+    //to get Password input
+    getPasswordInput() {
+        return cy.get('input[name="password"]');
+    }
+    //to enter Password data
+    enterPasswordInput(password) {
+        this.getPasswordInput()
+            .should('exist')
+            .and('be.visible')
+            .type(password);
+    }
+    //to press SignIn button to log in
+    pressSignInToLogInButton() {
+        cy.contains('button', 'Sign In')
+            .click();
     }
 }
 exports.PageObject = PageObject;
