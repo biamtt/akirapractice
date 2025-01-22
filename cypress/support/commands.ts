@@ -36,6 +36,7 @@
 //   }
 // }
 
+import 'cypress-xpath';
 import {PageObject} from "../pages/pageObject";
 
 Cypress.Commands.add('login', (username: string, password: string) => {
@@ -46,5 +47,5 @@ Cypress.Commands.add('login', (username: string, password: string) => {
     pageObject.clickSignInButton();
     pageObject.enterUsernameEmailInput(username);
     pageObject.enterPasswordInput(password);
-    //pageObject.pressSignInToLogInButton();
+    pageObject.pressSignInToLogInButton();
 });

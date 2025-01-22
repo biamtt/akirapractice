@@ -4,7 +4,7 @@ export class PageObject {
     private signInButton = 'a[href="/id/login"]';
     private usernameEmailInput = 'input[name="username"]';
     private passwordInput = 'input[name="password"]';
-    //private signInToLoginButton = '//*[@id="__next"]/div[2]/div/main/div/div[2]/form/button[2]';
+    private signInToLoginButton = '//*[@id="__next"]/div[2]/div/main/div/div[2]/form/button[2]';
 
     //To visit url
     visit(url: string) {
@@ -51,8 +51,8 @@ export class PageObject {
     }
 
     //to press SignIn button to log in
-    // pressSignInToLogInButton() {
-    //     cy.xpath('//*[@id="__next"]/div[2]/div/main/div/div[2]/form/button[2]').click();
-    // }
+    pressSignInToLogInButton() {
+        cy.xpath(this.signInToLoginButton).click();
+    }
 
 }
