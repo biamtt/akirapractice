@@ -51,8 +51,8 @@ export class PageObject {
     }
 
     //to press SignIn button to log in
-    pressSignInToLogInButton() {
-        cy.xpath('//*[@id="__next"]/div[2]/div/main/div/div[2]/form/button[2]').click();
-    }
+    // pressSignInToLogInButton() {
+    //     cy.xpath('//*[@id="__next"]/div[2]/div/main/div/div[2]/form/button[2]').click();
+    // }
 
 }

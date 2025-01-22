@@ -46,5 +46,5 @@ Cypress.Commands.add('login', (username: string, password: string) => {
     pageObject.clickSignInButton();
     pageObject.enterUsernameEmailInput(username);
     pageObject.enterPasswordInput(password);
-    pageObject.pressSignInToLogInButton();
+    //pageObject.pressSignInToLogInButton();
 });

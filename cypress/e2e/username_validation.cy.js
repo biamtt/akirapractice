@@ -1,10 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-/// <reference types="cypress" />
+// "use strict";
+// Object.defineProperty(exports, "__esModule", { value: true });
+// /// <reference types="cypress" />
 
-describe('Username validation', () => {
-    const username = "testbianca";
-    const password = "Akira@2024";
+describe('User log in to Sportsbet', () => {
+    let credentials;
+
+    before(() => {
+        cy.fixture('testdata').then((data) => {
+            credentials = data;
+        });
+    });
 
     Cypress.on('uncaught:exception', (err) => {
         if (err.message.includes('&')) {
@@ -12,7 +17,8 @@ describe('Username validation', () => {
         }
         return true;
     });
-    it('should access sportsbet, go to login page and proceed till logged in and check the username', () => {
-        cy.login(username, password);
+
+    it('Should access sportsbet main page and go to sign in to login', () => {
+        cy.login(credentials.username, credentials.password);
     });
 });
